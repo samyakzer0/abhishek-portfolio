@@ -64,7 +64,7 @@ export default function Layout({ children, currentPageName }) {
           { label: 'Services', ariaLabel: 'View our services', link: '#services' },
           { label: 'Impact', ariaLabel: 'View our impact', link: '#impact' },
           { label: 'About', ariaLabel: 'Learn about us', link: '#about' },
-          { label: 'Contact', ariaLabel: 'Get in touch', link: '#contact' }
+          { label: 'Contact', ariaLabel: 'Get in touch', link: 'mailto:abhishekthakur2771999@gmail.com' }
         ]}
         socialItems={[
           { label: 'Twitter', link: 'https://twitter.com' },
