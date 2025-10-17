@@ -73,19 +73,36 @@ export default function ImpactSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-16"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-gray-300"></div>
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">Impact</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Measurable Results</h2>
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center gap-3 mb-4"
+          >
+            <div className="h-px w-12 bg-gradient-to-r from-green-600 to-emerald-500"></div>
+            <span className="text-sm font-semibold text-green-600 uppercase tracking-wider">Impact</span>
+          </motion.div>
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            Measurable Results
+          </motion.h2>
+          <motion.p
+            className="text-xl text-gray-600 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             Real transformations backed by data and client success stories
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Results Metrics */}

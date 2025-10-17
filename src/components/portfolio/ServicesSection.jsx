@@ -58,17 +58,31 @@ export default function ServicesSection() {
     <section id="services" className="py-12 md:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-50px" }}
           className="mb-16"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-gray-300"></div>
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">Services</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold">How I Can Help</h2>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 mb-4"
+          >
+            <div className="h-px w-12 bg-gradient-to-r from-royal-blue to-slate-blue"></div>
+            <span className="text-sm font-semibold text-royal-blue uppercase tracking-wider">Services</span>
+          </motion.div>
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            How I Can Help
+          </motion.h2>
         </motion.div>
 
         {/* ScrollStack Services - Minimal Design */}

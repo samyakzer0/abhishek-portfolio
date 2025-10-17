@@ -4,14 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
+  const handleContactClick = () => {
+    window.location.href = 'mailto:abhishekthakur2771999@gmail.com?subject=Training Inquiry&body=Hi Abhishek, I would like to discuss communication training opportunities.';
   };
 
   return (
@@ -20,26 +14,59 @@ export default function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Name & Title */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-6"
           >
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-6">
-              ABHISHEK
-              <br />
-              THAKUR
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-xl">
-              Communication Skills Trainer | Interview Preparation Expert | Spoken English Mentor
-            </p>
-            <Button
-              onClick={scrollToContact}
-              size="lg"
-              className="bg-soft-navy hover:bg-slate-blue text-white px-8 py-6 text-base group"
+            <motion.h1
+              className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              Contact Now
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-            </Button>
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                ABHISHEK
+              </motion.span>
+              <br />
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="text-royal-blue"
+              >
+                THAKUR
+              </motion.span>
+            </motion.h1>
+            <motion.p
+              className="text-xl md:text-2xl text-gray-600 mb-8 max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+            >
+              Communication Skills Trainer | Interview Preparation Expert | Spoken English Mentor
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+            >
+              <Button
+                onClick={handleContactClick}
+                size="lg"
+                className="bg-gradient-to-r from-royal-blue to-slate-blue hover:from-slate-blue hover:to-royal-blue text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Contact Now
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
+              </Button>
+            </motion.div>
           </motion.div>
 
           {/* Right: Professional Headshot */}
