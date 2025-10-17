@@ -29,7 +29,9 @@ export const StaggeredMenu = ({
   const iconRef = useRef(null);
   const textInnerRef = useRef(null);
   const textWrapRef = useRef(null);
+  const headerRef = useRef(null);
   const [textLines, setTextLines] = useState(['Menu', 'Close']);
+  const [isMenuHidden, setIsMenuHidden] = useState(false);
 
   const openTlRef = useRef(null);
   const closeTweenRef = useRef(null);
@@ -66,6 +68,55 @@ export const StaggeredMenu = ({
     });
     return () => ctx.revert();
   }, [menuButtonColor, position]);
+
+  // Scroll event listener for hide-on-scroll functionality
+  React.useEffect(() => {
+    if (!isFixed) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateMenuVisibility = () => {
+      const scrollY = window.scrollY;
+      const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
+
+      // Don't hide menu button if menu is open
+      if (openRef.current) {
+        if (isMenuHidden) {
+          setIsMenuHidden(false);
+        }
+        lastScrollY = scrollY;
+        ticking = false;
+        return;
+      }
+
+      // Show menu button when scrolling up or when near top
+      if (scrollDirection === 'up' || scrollY < 50) {
+        if (isMenuHidden) {
+          setIsMenuHidden(false);
+        }
+      }
+      // Hide menu button when scrolling down and past threshold
+      else if (scrollDirection === 'down' && scrollY > 100) {
+        if (!isMenuHidden) {
+          setIsMenuHidden(true);
+        }
+      }
+
+      lastScrollY = scrollY;
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateMenuVisibility);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isFixed, isMenuHidden, open]);
 
   const buildOpenTimeline = useCallback(() => {
     const panel = panelRef.current;
@@ -269,6 +320,19 @@ export const StaggeredMenu = ({
     }
   }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
 
+  // Animate menu button visibility based on scroll
+  React.useEffect(() => {
+    const header = headerRef.current;
+    if (!header || !isFixed) return;
+
+    gsap.to(header, {
+      yPercent: isMenuHidden ? -100 : 0,
+      duration: 0.3,
+      ease: 'power2.out',
+      overwrite: 'auto'
+    });
+  }, [isMenuHidden, isFixed]);
+
   const animateText = useCallback(opening => {
     const inner = textInnerRef.current;
     if (!inner) return;
@@ -331,7 +395,7 @@ export const StaggeredMenu = ({
           return arr.map((c, i) => <div key={i} className="sm-prelayer" style={{ background: c }} />);
         })()}
       </div>
-      <header className="staggered-menu-header" aria-label="Main navigation header">
+      <header ref={headerRef} className="staggered-menu-header" aria-label="Main navigation header">
         <div className="sm-logo" aria-label="Logo">
           
         </div>
@@ -398,16 +462,8 @@ export const StaggeredMenu = ({
           </ul>
           {displaySocials && socialItems && socialItems.length > 0 && (
             <div className="sm-socials" aria-label="Social links">
-              <h3 className="sm-socials-title">Connect</h3>
-              <ul className="sm-socials-list" role="list">
-                {socialItems.map((s, i) => (
-                  <li key={s.label + i} className="sm-socials-item">
-                    <a href={s.link} target="_blank" rel="noopener noreferrer" className="sm-socials-link">
-                      {s.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+             
+              
             </div>
           )}
         </div>
