@@ -75,6 +75,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* Object position utilities for image cropping */
+  .object-center-top {
+    object-position: center top;
+  }
 }
 
 /* Marquee animations */

@@ -58,7 +58,7 @@ export default function HeroSection() {
               <Button
                 onClick={handleContactClick}
                 size="lg"
-                className="bg-gradient-to-r from-royal-blue to-slate-blue hover:from-slate-blue hover:to-royal-blue text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+                className="bg-royal-blue hover:bg-slate-blue text-white px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Contact Now
@@ -77,11 +77,11 @@ export default function HeroSection() {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-royal-blue/20 to-slate-blue/20 rounded-full blur-3xl"></div>
+              <div className="absolute inset-0 bg-royal-blue/20 rounded-full blur-3xl"></div>
               <img
-                src="/img/1753091925122.jpeg"
+                src="/img/1725782933236.jpeg"
                 alt="Abhishek Thakur"
-                className="relative w-72 h-72 md:w-96 md:h-96 rounded-full object-cover shadow-2xl"
+                className="relative w-72 h-72 md:w-96 md:h-96 rounded-full object-cover object-center-top shadow-2xl"
               />
             </div>
           </motion.div>

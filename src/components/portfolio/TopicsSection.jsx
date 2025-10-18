@@ -32,37 +32,37 @@ export default function TopicsSection() {
       icon: MessageCircle,
       title: "Spoken English Fluency",
       description: "Comprehensive training in pronunciation, grammar, vocabulary, and conversational English",
-      color: "from-royal-blue to-slate-blue"
+      color: "bg-royal-blue"
     },
     {
       icon: Crown,
       title: "Interview Success",
       description: "Master interview techniques, body language, and communication strategies for job placement",
-      color: "from-soft-navy to-royal-blue"
+      color: "bg-soft-navy"
     },
     {
       icon: Star,
       title: "Group Discussion Skills",
       description: "Excel in group discussions, debates, and collaborative communication scenarios",
-      color: "from-muted-gold to-royal-blue"
+      color: "bg-muted-gold"
     },
     {
       icon: Presentation,
       title: "Presentation Mastery",
       description: "Create and deliver impactful presentations with confidence and clarity",
-      color: "from-moss-green to-royal-blue"
+      color: "bg-moss-green"
     },
     {
       icon: BookOpen,
       title: "Resume Building",
       description: "Craft compelling resumes and professional profiles that stand out to employers",
-      color: "from-soft-navy to-slate-blue"
+      color: "bg-slate-blue"
     },
     {
       icon: Zap,
       title: "Professional Communication",
       description: "Develop workplace communication skills, email etiquette, and business correspondence",
-      color: "from-muted-gold to-soft-navy"
+      color: "bg-soft-navy"
     }
   ];
 

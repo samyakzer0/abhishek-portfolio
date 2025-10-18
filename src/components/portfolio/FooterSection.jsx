@@ -168,7 +168,7 @@ export default function FooterSection() {
               exit={{ opacity: 0, scale: 0.8, y: 20 }}
               transition={{ duration: 0.3 }}
               onClick={scrollToTop}
-              className="fixed bottom-8 right-8 bg-gradient-to-r from-royal-blue to-slate-blue hover:from-slate-blue hover:to-royal-blue text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 group z-50"
+              className="fixed bottom-8 right-8 bg-royal-blue hover:bg-slate-blue text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 group z-50"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
             >

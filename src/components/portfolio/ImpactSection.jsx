@@ -69,7 +69,7 @@ export default function ImpactSection() {
   ];
 
   return (
-    <section id="impact" className="py-16 md:py-24 lg:py-32 bg-white-smoke">
+    <section id="impact" className="py-8 md:py-12 lg:py-16 bg-white-smoke">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           ref={ref}
@@ -84,11 +84,11 @@ export default function ImpactSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex items-center gap-3 mb-4"
           >
-            <div className="h-px w-12 bg-gradient-to-r from-green-600 to-emerald-500"></div>
-            <span className="text-sm font-semibold text-green-600 uppercase tracking-wider">Impact</span>
+            <div className="h-px w-12 bg-royal-blue"></div>
+            <span className="text-sm font-semibold text-royal-blue uppercase tracking-wider">Impact</span>
           </motion.div>
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -136,7 +136,7 @@ export default function ImpactSection() {
                 className="bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-all duration-300 group mx-3 md:mx-4 w-80 md:w-96 flex-shrink-0"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-royal-blue to-slate-blue rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex-shrink-0 w-12 h-12 bg-royal-blue rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <MessageSquare className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">

@@ -46,11 +46,11 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="absolute -inset-4 bg-gradient-to-br from-royal-blue/10 to-slate-blue/10 rounded-3xl blur-2xl"></div>
+            <div className="absolute -inset-4 bg-royal-blue/10 rounded-3xl blur-2xl"></div>
             <img
-              src="/img/1752505337820.jpeg"
+              src="img/1735809837262.jpeg"
               alt="Abhishek Thakur - Communication Skills Trainer"
-              className="relative rounded-2xl shadow-2xl w-full h-[600px] object-cover"
+              className="relative rounded-2xl shadow-2xl w-full h-[600px] object-cover object-center-top"
             />
           </motion.div>
 
@@ -74,7 +74,7 @@ export default function AboutSection() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-gradient-to-r from-blue-50 to-transparent p-6 rounded-xl border-l-4 border-royal-blue"
+                className="bg-blue-50 p-6 rounded-xl border-l-4 border-royal-blue"
               >
                 <p>
                   My journey in communication training began <span className="font-semibold text-gray-900">5+ years ago</span> when I discovered the transformative
@@ -87,7 +87,7 @@ export default function AboutSection() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-l from-slate-50 to-transparent p-6 rounded-xl border-r-4 border-slate-blue"
+                className="bg-slate-50 p-6 rounded-xl border-r-4 border-slate-blue"
               >
                 <p>
                   I believe that great communication is the foundation of <span className="font-semibold text-gray-900">career success</span>, personal growth, and
@@ -100,7 +100,7 @@ export default function AboutSection() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="bg-gradient-to-r from-green-50 to-transparent p-6 rounded-xl border-l-4 border-green-600"
+                className="bg-green-50 p-6 rounded-xl border-l-4 border-green-600"
               >
                 <p>
                   What sets my training apart is the focus on <span className="font-semibold text-gray-900">real-world application</span>. I don't just teach
@@ -126,9 +126,9 @@ export default function AboutSection() {
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: 1.0 + index * 0.1 }}
                     whileHover={{ scale: 1.02, y: -2 }}
-                    className="group flex items-center gap-4 bg-gradient-to-r from-white to-gray-50 hover:from-royal-blue/5 hover:to-slate-blue/5 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 hover:border-royal-blue/20"
+                    className="group flex items-center gap-4 bg-gray-50 hover:bg-royal-blue/5 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 hover:border-royal-blue/20"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-royal-blue to-slate-blue rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 bg-royal-blue rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                       <credential.icon className="w-6 h-6 text-white" />
                     </div>
                     <span className="text-sm font-medium text-gray-800 group-hover:text-gray-900 transition-colors">{credential.text}</span>
