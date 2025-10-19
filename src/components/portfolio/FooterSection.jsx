@@ -90,7 +90,7 @@ export default function FooterSection() {
           <div className="space-y-4 pointer-events-auto">
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Quick Links</h3>
             <nav className="space-y-3 pointer-events-auto" role="navigation" aria-label="Footer navigation">
-              <a href="#hero" className="block text-gray-700 hover:text-[#3A7CA5] transition-colors py-2 px-1 cursor-pointer hover:bg-gray-50 rounded">Home</a>
+              
               <a href="#about" className="block text-gray-700 hover:text-[#3A7CA5] transition-colors py-2 px-1 cursor-pointer hover:bg-gray-50 rounded">About</a>
               <a href="#services" className="block text-gray-700 hover:text-[#3A7CA5] transition-colors py-2 px-1 cursor-pointer hover:bg-gray-50 rounded">Services</a>
               <a href="#impact" className="block text-gray-700 hover:text-[#3A7CA5] transition-colors py-2 px-1 cursor-pointer hover:bg-gray-50 rounded">Impact</a>
@@ -103,7 +103,7 @@ export default function FooterSection() {
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Connect</h3>
             <div className="space-y-3 pointer-events-auto" role="navigation" aria-label="Social media links">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/abhishek-trainer/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-700 hover:text-[#3A7CA5] transition-colors py-2 px-1 cursor-pointer hover:bg-gray-50 rounded group"
@@ -111,15 +111,7 @@ export default function FooterSection() {
                 LinkedIn
                 <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-700 hover:text-[#3A7CA5] transition-colors py-2 px-1 cursor-pointer hover:bg-gray-50 rounded group"
-              >
-                Twitter
-                <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
+              
               <a
                 href="https://youtube.com"
                 target="_blank"

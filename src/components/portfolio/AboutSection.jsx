@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Award, BookOpen, Briefcase, GraduationCap, Trophy, Lightbulb } from "lucide-react";
+import { Award, BookOpen, Briefcase, GraduationCap, Trophy, Lightbulb, School } from "lucide-react";
 
 export default function AboutSection() {
   const [inView, setInView] = useState(false);
@@ -28,6 +28,7 @@ export default function AboutSection() {
   }, []);
 
   const credentials = [
+    { icon: School, text: "MBA in HR & Marketing" },
     { icon: GraduationCap, text: "B.E. in Computer Science Engineering" },
     { icon: Trophy, text: "TEFL Certified (120 hours)" },
     { icon: Lightbulb, text: "Emotional Intelligence Practitioner" },
@@ -118,7 +119,7 @@ export default function AboutSection() {
               className="space-y-4"
             >
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Professional Credentials</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {credentials.map((credential, index) => (
                   <motion.div
                     key={credential.text}

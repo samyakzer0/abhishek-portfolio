@@ -37,6 +37,25 @@ export default function ServicesSection() {
     setTimeout(() => setExpandedCard(null), 300);
   };
 
+  const handleGetStarted = (service) => {
+    const subject = `Training Inquiry - ${service.title}`;
+    const body = `Hi Abhishek,
+
+I am interested in your "${service.title}" service.
+
+Service Details:
+- ${service.subtitle}
+- Duration: ${service.duration}
+- Students: ${service.students}
+
+Please provide more information about this training program and how we can get started.
+
+Thank you!`;
+
+    const mailtoLink = `mailto:abhishekthakur2771999@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  };
+
   const scrollStackProps = {
     itemDistance: isDesktop ? 20 : 50,
     itemScale: isDesktop ? 0.006 : 0.02,
@@ -122,10 +141,12 @@ export default function ServicesSection() {
             overflow: hidden;
           }
 
-          /* Mobile Modal Styles */
+          /* Enhanced Mobile Modal Styles */
           .mobile-modal-scroll {
             -webkit-overflow-scrolling: touch;
-            overscroll-behavior: contain;
+            overscroll-behavior-y: contain;
+            scroll-snap-type: y proximity;
+            scrollbar-gutter: stable;
           }
 
           /* Hide scrollbar but keep functionality */
@@ -136,6 +157,24 @@ export default function ServicesSection() {
           .mobile-modal-scroll {
             -ms-overflow-style: none;
             scrollbar-width: none;
+          }
+
+          /* Ensure modal container allows flex layout */
+          .modal-flex-container {
+            display: flex;
+            flex-direction: column;
+          }
+
+          /* Enhanced modal animations */
+          .modal-backdrop-blur {
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+          }
+
+          /* Smooth content sections */
+          .modal-content-section {
+            scroll-snap-align: start;
+            scroll-behavior: smooth;
           }
 
         `}</style>
@@ -262,13 +301,13 @@ export default function ServicesSection() {
           <AnimatePresence>
             {isModalOpen && expandedCard !== null && (
               <>
-                {/* Backdrop Overlay */}
+                {/* Enhanced Backdrop Overlay */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+                  transition={{ duration: 0.4 }}
+                  className="fixed inset-0 bg-black/60 modal-backdrop-blur z-50"
                   onClick={closeModal}
                 />
 
@@ -279,85 +318,102 @@ export default function ServicesSection() {
                   exit={{ x: "100%", opacity: 0 }}
                   transition={{
                     type: "spring",
-                    damping: 30,
-                    stiffness: 300,
-                    duration: 0.3
+                    damping: 35,
+                    stiffness: 400,
+                    duration: 0.4
                   }}
-                  className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 overflow-y-auto mobile-modal-scroll"
+                  className="fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl z-50 flex flex-col mobile-modal-scroll modal-flex-container"
+                  style={{
+                    borderTopLeftRadius: '2rem',
+                    borderBottomLeftRadius: '2rem',
+                    maxWidth: 'calc(100vw - 2rem)'
+                  }}
                 >
-                  {/* Close Button */}
-                  <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 p-4 flex justify-between items-center">
-                    <h2 className="text-lg font-bold text-gray-900">Service Details</h2>
+                  {/* Enhanced Header */}
+                  <div className="sticky top-0 bg-gradient-to-r from-white via-white to-white/95 backdrop-blur-md border-b border-gray-200/80 p-6 flex justify-between items-center shadow-sm">
+                    <div>
+                      <h2 className="text-xl font-bold text-gray-900 mb-1">Service Details</h2>
+                      <p className="text-sm text-gray-500 font-medium">Comprehensive information</p>
+                    </div>
                     <button
                       onClick={closeModal}
-                      className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-royal-blue hover:text-white transition-all duration-300 group shadow-sm"
                     >
-                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-gray-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </button>
                   </div>
 
-                  {/* Expanded Card Content */}
+                  {/* Enhanced Content Layout */}
                   {services[expandedCard] && (
-                    <div className="p-6">
-                      {/* Service Image */}
-                      <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-6">
-                        <img
-                          src={services[expandedCard].image}
-                          alt={services[expandedCard].title}
-                          className="w-full h-full object-cover object-center-top"
-                        />
-                      </div>
-
-                      {/* Service Title & Subtitle */}
-                      <div className="mb-6">
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                          {services[expandedCard].title}
-                        </h3>
-                        <p className="text-lg text-royal-blue font-semibold mb-4">
-                          {services[expandedCard].subtitle}
-                        </p>
-
-                        {/* Stats Badges */}
-                        <div className="flex gap-4 mb-4">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-royal-blue/10 text-royal-blue text-sm font-medium">
-                            {services[expandedCard].duration}
-                          </span>
-                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium">
-                            {services[expandedCard].students}
-                          </span>
+                    <div className="flex flex-col h-full">
+                      {/* Scrollable Content */}
+                      <div className="flex-1 overflow-y-auto mobile-modal-scroll px-6 py-2 modal-content-section" style={{ height: 'calc(100vh - 200px)' }}>
+                        {/* Service Image */}
+                        <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-8 shadow-lg">
+                          <img
+                            src={services[expandedCard].image}
+                            alt={services[expandedCard].title}
+                            className="w-full h-full object-cover object-center-top"
+                          />
                         </div>
-                      </div>
 
-                      {/* Description */}
-                      <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-gray-900 mb-3">About This Service</h4>
-                        <p className="text-gray-600 leading-relaxed">
-                          {services[expandedCard].description}
-                        </p>
-                      </div>
-
-                      {/* Highlights */}
-                      <div className="mb-6">
-                        <h4 className="text-lg font-semibold text-gray-900 mb-3">Key Focus Areas</h4>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {services[expandedCard].highlights.map((highlight, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl"
-                            >
-                              <div className="w-2 h-2 bg-royal-blue rounded-full flex-shrink-0"></div>
-                              <span className="text-gray-700 font-medium">{highlight}</span>
+                        {/* Service Title & Subtitle */}
+                        <div className="mb-8">
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex-1">
+                              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 leading-tight">
+                                {services[expandedCard].title}
+                              </h3>
+                              <p className="text-xl text-royal-blue font-semibold mb-4 leading-relaxed">
+                                {services[expandedCard].subtitle}
+                              </p>
                             </div>
-                          ))}
+                          </div>
+
+                          {/* Enhanced Stats Badges */}
+                          <div className="flex flex-wrap gap-3 mb-6">
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-royal-blue/10 to-royal-blue/5 text-royal-blue text-sm font-semibold border border-royal-blue/20">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              {services[expandedCard].duration}
+                            </div>
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-100 to-emerald-50 text-green-700 text-sm font-semibold border border-green-200">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                              </svg>
+                              {services[expandedCard].students}
+                            </div>
+                          </div>
                         </div>
+
+                        {/* Enhanced Description */}
+                        <div className="mb-8">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="h-px w-8 bg-royal-blue"></div>
+                            <h4 className="text-xl font-bold text-gray-900">About This Service</h4>
+                          </div>
+                          <p className="text-gray-700 leading-relaxed text-base pl-11">
+                            {services[expandedCard].description}
+                          </p>
+                        </div>
+
                       </div>
 
-                      {/* Call to Action */}
-                      <div className="mt-8">
-                        <button className="w-full bg-royal-blue hover:bg-slate-blue text-white font-semibold py-4 px-6 rounded-xl transition-colors duration-300">
-                          Get Started with This Service
+                      {/* Enhanced CTA Section */}
+                      <div className="sticky bottom-0 bg-white border-t border-gray-200 p-6 shadow-lg">
+                        <button
+                          onClick={() => handleGetStarted(services[expandedCard])}
+                          className="w-full bg-gradient-to-r from-royal-blue to-slate-blue hover:from-slate-blue hover:to-royal-blue text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
+                        >
+                          <span className="flex items-center justify-center gap-2">
+                            Get Started
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                          </span>
                         </button>
                       </div>
                     </div>
