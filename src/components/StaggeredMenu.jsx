@@ -444,8 +444,14 @@ export const StaggeredMenu = ({
                           window.scrollTo({ top: offsetPosition, behavior: "smooth" });
                         }
                       }
+                      // Properly reset all menu state when navigating to a section
+                      openRef.current = false;
                       setOpen(false);
+                      onMenuClose?.();
                       playClose();
+                      animateIcon(false);
+                      animateColor(false);
+                      animateText(false);
                     }}
                   >
                     <span className="sm-panel-itemLabel">{it.label}</span>
